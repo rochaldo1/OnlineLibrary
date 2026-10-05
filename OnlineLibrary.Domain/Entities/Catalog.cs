@@ -1,5 +1,8 @@
 ﻿namespace OnlineLibrary.Domain.Entities
 {
+    /// <summary>
+    /// Сущность "Каталог"
+    /// </summary>
     public class Catalog
     {
         public Guid Id { get; set; }
