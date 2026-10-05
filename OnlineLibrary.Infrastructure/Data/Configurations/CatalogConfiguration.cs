@@ -4,6 +4,9 @@ using OnlineLibrary.Domain.Entities;
 
 namespace OnlineLibrary.Infrastructure.Data.Configurations
 {
+    /// <summary>
+    /// Конфигурация сущности "Каталог" для Entity Framework Core
+    /// </summary>
     public class CatalogConfiguration : IEntityTypeConfiguration<Catalog>
     {
         public void Configure(EntityTypeBuilder<Catalog> builder)
