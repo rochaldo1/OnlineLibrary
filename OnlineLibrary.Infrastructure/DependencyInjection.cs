@@ -30,5 +30,18 @@ namespace OnlineLibrary.Infrastructure
 
             return services;
         }
+
+        /// <summary>
+        /// Применяет к БД неприменённые миграции EF Core.
+        /// Предназначен для окружения Development.
+        /// </summary>
+        /// <param name="serviceProvider">Корневой провайдер сервисов приложения</param>
+        public static void ApplyMigrations(
+            this IServiceProvider serviceProvider)
+        {
+            using var scope = serviceProvider.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            dbContext.Database.Migrate();
+        }
     }
 }
