@@ -5,7 +5,7 @@ using OnlineLibrary.Domain.Entities;
 namespace OnlineLibrary.Infrastructure.Data.Configurations
 {
     /// <summary>
-    /// Конфигурация сущности "Книга" для Entity Framework Core
+    /// Конфигурация сущности "Книга" для Entity Framework Core.
     /// </summary>
     public class BookConfiguration : IEntityTypeConfiguration<Book>
     {

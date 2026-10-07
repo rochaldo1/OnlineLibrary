@@ -1,7 +1,7 @@
 ﻿namespace OnlineLibrary.Domain.Entities
 {
     /// <summary>
-    /// Сущность "Каталог"
+    /// Сущность "Каталог".
     /// </summary>
     public class Catalog
     {

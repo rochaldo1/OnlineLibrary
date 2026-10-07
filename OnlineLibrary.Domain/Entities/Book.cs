@@ -1,7 +1,7 @@
 ﻿namespace OnlineLibrary.Domain.Entities
 {
     /// <summary>
-    /// Сущность "Книга"
+    /// Сущность "Книга".
     /// </summary>
     public class Book
     {

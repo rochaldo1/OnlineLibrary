@@ -6,17 +6,17 @@ using OnlineLibrary.Infrastructure.Data;
 namespace OnlineLibrary.Infrastructure
 {
     /// <summary>
-    /// Методы расширения для регистрации сервисов слоя Infrastructure в DI-контейнере 
+    /// Методы расширения для регистрации сервисов слоя Infrastructure в DI-контейнере.
     /// </summary>
     public static class DependencyInjection
     {
         /// <summary>
-        /// Регистрирует AppDbContext с PostgreSQL
+        /// Регистрирует AppDbContext с PostgreSQL.
         /// </summary>
-        /// <param name="services">Коллекция сервисов приложения</param>
-        /// <param name="configuration">Конфигурация приложения</param>
-        /// <returns>Коллекция сервисов для цепочки вызовов</returns>
-        /// <exception cref="InvalidOperationException">Строка подключения DefaultConnection не задана в конфигурации</exception>
+        /// <param name="services">Коллекция сервисов приложения.</param>
+        /// <param name="configuration">Конфигурация приложения.</param>
+        /// <returns>Коллекция сервисов для цепочки вызовов.</returns>
+        /// <exception cref="InvalidOperationException">Строка подключения DefaultConnection не задана в конфигурации.</exception>
         public static IServiceCollection AddInfrastructure(
             this IServiceCollection services, 
             IConfiguration configuration)
@@ -35,7 +35,7 @@ namespace OnlineLibrary.Infrastructure
         /// Применяет к БД неприменённые миграции EF Core.
         /// Предназначен для окружения Development.
         /// </summary>
-        /// <param name="serviceProvider">Корневой провайдер сервисов приложения</param>
+        /// <param name="serviceProvider">Корневой провайдер сервисов приложения.</param>
         public static void ApplyMigrations(
             this IServiceProvider serviceProvider)
         {

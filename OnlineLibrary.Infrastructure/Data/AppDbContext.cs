@@ -4,7 +4,7 @@ using OnlineLibrary.Domain.Entities;
 namespace OnlineLibrary.Infrastructure.Data
 {
     /// <summary>
-    /// Контекст базы данных приложения
+    /// Контекст базы данных приложения.
     /// </summary>
     public class AppDbContext : DbContext
     {
