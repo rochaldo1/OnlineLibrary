@@ -1,7 +1,7 @@
 ﻿namespace OnlineLibrary.Application.Exceptions
 {
     /// <summary>
-    /// Исключение, выбрасываемое при отсуствии сущности с заданным идентификатором.
+    /// Исключение, выбрасываемое при отсутствии сущности с заданным идентификатором.
     /// </summary>
     public class NotFoundException : Exception
     {
