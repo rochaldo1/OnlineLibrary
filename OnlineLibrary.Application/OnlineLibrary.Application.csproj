@@ -10,4 +10,11 @@
     <ProjectReference Include="..\OnlineLibrary.Domain\OnlineLibrary.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\Catalogs\" />
+    <Folder Include="Validators\" />
+    <Folder Include="Mapping\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
