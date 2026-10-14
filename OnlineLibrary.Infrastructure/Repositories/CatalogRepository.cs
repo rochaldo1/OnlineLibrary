@@ -42,7 +42,7 @@ namespace OnlineLibrary.Infrastructure.Repositories
         }
 
         /// <inheritdoc/>
-        public async Task UpdateAsync(Catalog catalog, CancellationToken cancellationToken)
+        public async Task SaveChangesAsync(CancellationToken cancellationToken)
         {
             await _context.SaveChangesAsync(cancellationToken);
         }
