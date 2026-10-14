@@ -54,7 +54,7 @@ namespace OnlineLibrary.Application.Services
             var catalog = await GetCatalogOrThrowAsync(id, cancellationToken);
 
             catalog.Name = NormalizeName(request.Name);
-            await _catalogRepository.UpdateAsync(catalog, cancellationToken);
+            await _catalogRepository.SaveChangesAsync(cancellationToken);
 
             return catalog.ToResponse();
         }

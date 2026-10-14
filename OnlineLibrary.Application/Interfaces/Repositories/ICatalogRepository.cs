@@ -3,12 +3,13 @@
 namespace OnlineLibrary.Application.Interfaces.Repositories
 {
     /// <summary>
-    /// Хранилище каталогов. Операции изменения сразу сохраняют изменения в хранилище.
+    /// Хранилище каталогов. Создание и удаление сохраняются сразу.
+    /// Изменения загруженного каталога сохраняются вызовом <see cref="SaveChangesAsync"/>.
     /// </summary>
     public interface ICatalogRepository
     {
         /// <summary>
-        /// Возвращает все каталоги. Если катаогов нет, возвращает пустой список.
+        /// Возвращает все каталоги. Если каталогов нет, возвращает пустой список.
         /// </summary>
         /// <param name="cancellationToken">Токен отмены операции.</param>
         /// <returns>Список каталогов.</returns>
@@ -25,21 +26,20 @@ namespace OnlineLibrary.Application.Interfaces.Repositories
         /// <summary>
         /// Добавляет каталог и сохраняет изменения. После вызова у каталога заполнен идентификатор.
         /// </summary>
-        /// <param name="catalog">Добавляет каталог.</param>
+        /// <param name="catalog">Добавляемый каталог.</param>
         /// <param name="cancellationToken">Токен отмены операции.</param>
         Task CreateAsync(Catalog catalog, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Сохраняет изменения каталога, полученного из этого репозитория.
+        /// Сохраняет изменения каталогов, загруженных через этот репозиторий.
         /// </summary>
-        /// <param name="catalog">Изменённый каталог.</param>
         /// <param name="cancellationToken">Токен отмены операции.</param>
-        Task UpdateAsync(Catalog catalog, CancellationToken cancellationToken);
+        Task SaveChangesAsync(CancellationToken cancellationToken);
 
         /// <summary>
         /// Удаляет каталог вместе с его книгами.
         /// </summary>
-        /// <param name="id">Идентификатор каталог.</param>
+        /// <param name="id">Идентификатор каталога.</param>
         /// <param name="cancellationToken">Токен отмены операции.</param>
         /// <returns><c>true</c>, если каталог был удалён; <c>false</c>, если его не существует.</returns>
         Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken);
