@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OnlineLibrary.Application.Interfaces.Repositories;
 using OnlineLibrary.Infrastructure.Data;
+using OnlineLibrary.Infrastructure.Repositories;
 
 namespace OnlineLibrary.Infrastructure
 {
@@ -27,6 +29,8 @@ namespace OnlineLibrary.Infrastructure
                 throw new InvalidOperationException("Не задана строка подключения ConnectionStrings:DefaultConnection");
 
             services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connection));
+
+            services.AddScoped<ICatalogRepository, CatalogRepository>();
 
             return services;
         }
