@@ -31,7 +31,7 @@ namespace OnlineLibrary.Api.ExceptionHandling
             var problemDetails = new ProblemDetails
             {
                 Status = httpContext.Response.StatusCode,
-                Title = "Внутрення ошибка сервера",
+                Title = "Внутренняя ошибка сервера",
                 Detail = "Произошла непредвиденная ошибка. Повторите запрос позже."
             };
 
