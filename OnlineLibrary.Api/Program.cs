@@ -1,13 +1,13 @@
 using OnlineLibrary.Api.ExceptionHandling;
+using OnlineLibrary.Api.Filters;
 using OnlineLibrary.Application;
-using OnlineLibrary.Application.Exceptions;
 using OnlineLibrary.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
