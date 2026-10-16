@@ -24,6 +24,7 @@ namespace OnlineLibrary.Api.Controllers
         /// <param name="cancellationToken">Токен отмены запроса.</param>
         /// <returns>Список каталогов.</returns>
         [HttpGet]
+        [ProducesResponseType(typeof(IReadOnlyList<CatalogResponse>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IReadOnlyList<CatalogResponse>>> GetList(CancellationToken cancellationToken)
         {
             var catalogs = await _catalogService.GetListAsync(cancellationToken);
@@ -38,6 +39,8 @@ namespace OnlineLibrary.Api.Controllers
         /// <param name="cancellationToken">Токен отмены запроса.</param>
         /// <returns>Найденный каталог.</returns>
         [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(CatalogResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CatalogResponse>> GetById(Guid id, CancellationToken cancellationToken)
         {
             var catalog = await _catalogService.GetByIdAsync(id, cancellationToken);
@@ -52,6 +55,8 @@ namespace OnlineLibrary.Api.Controllers
         /// <param name="cancellationToken">Токен отмены запроса.</param>
         /// <returns>Созданный каталог и ссылка на него в заголовке Location.</returns>
         [HttpPost]
+        [ProducesResponseType(typeof(CatalogResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<CatalogResponse>> Create(CreateCatalogRequest request, CancellationToken cancellationToken)
         {
             var catalog = await _catalogService.CreateAsync(request, cancellationToken);
@@ -70,6 +75,9 @@ namespace OnlineLibrary.Api.Controllers
         /// <param name="cancellationToken">Токен отмены запроса.</param>
         /// <returns>Обновлённый каталог.</returns>
         [HttpPut("{id:guid}")]
+        [ProducesResponseType(typeof(CatalogResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CatalogResponse>> Update(Guid id, UpdateCatalogRequest request, CancellationToken cancellationToken)
         {
             var catalog = await _catalogService.UpdateAsync(id, request, cancellationToken);
@@ -83,6 +91,8 @@ namespace OnlineLibrary.Api.Controllers
         /// <param name="id">Идентификатор каталога.</param>
         /// <param name="cancellationToken">Токен отмены запроса.</param>
         [HttpDelete("{id:guid}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
         {
             await _catalogService.DeleteAsync(id, cancellationToken);
