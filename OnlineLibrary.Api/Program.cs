@@ -1,6 +1,7 @@
-using OnlineLibrary.Api.ExceptionHandling;
 using OnlineLibrary.Api.Filters;
+using OnlineLibrary.Api.Middleware;
 using OnlineLibrary.Application;
+using OnlineLibrary.Application.Exceptions;
 using OnlineLibrary.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,13 +15,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 
-builder.Services.AddExceptionHandler<NotFoundExceptionHandler>();
-builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
-app.UseExceptionHandler();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
