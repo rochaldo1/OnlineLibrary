@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using OnlineLibrary.Application.Common;
 using OnlineLibrary.Application.Dtos.Catalogs;
 
 namespace OnlineLibrary.Application.Validators
@@ -12,7 +13,7 @@ namespace OnlineLibrary.Application.Validators
         {
             RuleFor(c => c.Name)
                 .NotEmpty().WithMessage("Название каталога не может быть пустым.")
-                .Must(name => name is null || name.Trim().Length <= 200)
+                .Must(name => name is null || TextNormalizer.NormalizeRequired(name).Length <= 200)
                 .WithMessage("Название каталога не может превышать 200 символов.");
         }
     }
