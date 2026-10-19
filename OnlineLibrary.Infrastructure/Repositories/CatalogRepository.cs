@@ -56,5 +56,11 @@ namespace OnlineLibrary.Infrastructure.Repositories
 
             return deletedCount > 0;
         }
+
+        /// <inheritdoc/>
+        public async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken)
+        {
+            return await _context.Catalogs.AnyAsync(c => c.Id == id, cancellationToken);
+        }
     }
 }
