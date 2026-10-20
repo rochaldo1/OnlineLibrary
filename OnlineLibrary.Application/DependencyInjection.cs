@@ -19,6 +19,7 @@ namespace OnlineLibrary.Application
             this IServiceCollection services)
         {
             services.AddScoped<ICatalogService, CatalogService>();
+            services.AddScoped<IBookService, BookService>();
             services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
             return services;
