@@ -31,6 +31,7 @@ namespace OnlineLibrary.Infrastructure
             services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connection));
 
             services.AddScoped<ICatalogRepository, CatalogRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
 
             return services;
         }
