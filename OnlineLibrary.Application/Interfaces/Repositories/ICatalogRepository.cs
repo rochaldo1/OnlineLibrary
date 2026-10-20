@@ -43,5 +43,13 @@ namespace OnlineLibrary.Application.Interfaces.Repositories
         /// <param name="cancellationToken">Токен отмены операции.</param>
         /// <returns><c>true</c>, если каталог был удалён; <c>false</c>, если его не существует.</returns>
         Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Проверяет, существует ли каталог с указанным идентификатором.
+        /// </summary>
+        /// <param name="id">Идентификатор каталога.</param>
+        /// <param name="cancellationToken">Токен отмены операции.</param>
+        /// <returns><c>true</c>, если каталог существует, иначе <c>false</c>.</returns>
+        Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken);
     }
 }

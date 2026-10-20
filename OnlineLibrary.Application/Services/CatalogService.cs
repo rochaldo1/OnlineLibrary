@@ -1,4 +1,5 @@
 ﻿using OnlineLibrary.Application.Dtos.Catalogs;
+using OnlineLibrary.Application.Common;
 using OnlineLibrary.Application.Exceptions;
 using OnlineLibrary.Application.Interfaces.Repositories;
 using OnlineLibrary.Application.Interfaces.Services;
@@ -42,7 +43,7 @@ namespace OnlineLibrary.Application.Services
         {
             var catalog = request.ToEntity();
 
-            catalog.Name = NormalizeName(catalog.Name);
+            catalog.Name = TextNormalizer.NormalizeRequired(catalog.Name);
             await _catalogRepository.CreateAsync(catalog, cancellationToken);
 
             return catalog.ToResponse();
@@ -53,7 +54,7 @@ namespace OnlineLibrary.Application.Services
         {
             var catalog = await GetCatalogOrThrowAsync(id, cancellationToken);
 
-            catalog.Name = NormalizeName(request.Name);
+            catalog.Name = TextNormalizer.NormalizeRequired(request.Name);
             await _catalogRepository.SaveChangesAsync(cancellationToken);
 
             return catalog.ToResponse();
@@ -83,16 +84,6 @@ namespace OnlineLibrary.Application.Services
                 throw new NotFoundException("Каталог", id);
 
             return catalog;
-        }
-
-        /// <summary>
-        /// Обрезает пробелы по краям названия каталога.
-        /// </summary>
-        /// <param name="name">Название каталога.</param>
-        /// <returns>Название каталога без пробелов по краям.</returns>
-        private static string NormalizeName(string name)
-        {
-            return name.Trim();
         }
     }
 }
