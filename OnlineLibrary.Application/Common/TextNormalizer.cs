@@ -13,7 +13,7 @@
         /// <exception cref="ArgumentNullException">Значение равно <c>null</c>.</exception>
         public static string NormalizeRequired(string value)
         {
-            ArgumentException.ThrowIfNullOrEmpty(value);
+            ArgumentNullException.ThrowIfNull(value);
 
             return value.Trim();
         }
