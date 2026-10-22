@@ -10,8 +10,11 @@
         /// </summary>
         /// <param name="value">Исходное значение.</param>
         /// <returns>Значение без пробельных символов по краям.</returns>
+        /// <exception cref="ArgumentNullException">Значение равно <c>null</c>.</exception>
         public static string NormalizeRequired(string value)
         {
+            ArgumentException.ThrowIfNullOrEmpty(value);
+
             return value.Trim();
         }
 
