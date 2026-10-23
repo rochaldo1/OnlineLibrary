@@ -1,4 +1,5 @@
 ﻿using AutoFixture;
+using OnlineLibrary.Application.Dtos.Books;
 
 namespace OnlineLibrary.Application.Tests.Common
 {
@@ -14,5 +15,16 @@ namespace OnlineLibrary.Application.Tests.Common
         /// <returns>Строка с фиксированной длиной.</returns>
         public static string CreateString(int length) =>
             new string(new Fixture().CreateMany<char>(length).ToArray());
+
+        /// <summary>
+        /// Создаёт корректный запрос на создание книги со сгенерированными значениями.
+        /// </summary>
+        /// <returns>Запрос, проходящий валидацию.</returns>
+        public static CreateBookRequest ValidCreateBookRequest()
+        {
+            var fixture = new Fixture();
+
+            return new CreateBookRequest(fixture.Create<string>(), fixture.Create<string>(), fixture.Create<Guid>());
+        }
     }
 }
