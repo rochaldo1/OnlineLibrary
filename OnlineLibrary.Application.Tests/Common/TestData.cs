@@ -26,5 +26,16 @@ namespace OnlineLibrary.Application.Tests.Common
 
             return new CreateBookRequest(fixture.Create<string>(), fixture.Create<string>(), fixture.Create<Guid>());
         }
+
+        /// <summary>
+        /// Создаёт корректный запрос на обновление книги со сгенерированными значениями.
+        /// </summary>
+        /// <returns>Запрос, проходящий валидацию.</returns>
+        public static UpdateBookRequest ValidUpdateBookRequest()
+        {
+            var fixture = new Fixture();
+
+            return new UpdateBookRequest(fixture.Create<string>(), fixture.Create<string>());
+        }
     }
 }
