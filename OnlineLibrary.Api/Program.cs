@@ -1,5 +1,4 @@
 using OnlineLibrary.Api;
-using OnlineLibrary.Api.Filters;
 using OnlineLibrary.Api.Middleware;
 using OnlineLibrary.Application;
 using OnlineLibrary.Infrastructure;
