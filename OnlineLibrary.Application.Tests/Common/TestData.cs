@@ -53,5 +53,24 @@ namespace OnlineLibrary.Application.Tests.Common
                 Name = fixture.Create<string>()
             };
         }
+
+        /// <summary>
+        /// Создаёт книгу со сгенерированными идентификатором, названием,
+        /// описанием и заданным идентификатором каталога.
+        /// </summary>
+        /// <param name="catalogId">Идентификатор каталога.</param>
+        /// <returns>Книга с заданным идентификатором каталога, без загруженной навигации на каталог.</returns>
+        public static Book CreateBook(Guid catalogId)
+        {
+            var fixture = new Fixture();
+
+            return new Book
+            {
+                Id = fixture.Create<Guid>(),
+                Title = fixture.Create<string>(),
+                Description = fixture.Create<string>(),
+                CatalogId = catalogId
+            };
+        }
     }
 }
