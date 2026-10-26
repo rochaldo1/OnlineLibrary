@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using OnlineLibrary.Application.Dtos.Books;
+using OnlineLibrary.Domain.Entities;
 
 namespace OnlineLibrary.Application.Tests.Common
 {
@@ -36,6 +37,21 @@ namespace OnlineLibrary.Application.Tests.Common
             var fixture = new Fixture();
 
             return new UpdateBookRequest(fixture.Create<string>(), fixture.Create<string>());
+        }
+
+        /// <summary>
+        /// Создаёт каталог со сгенерированным идентификатором и названием.
+        /// </summary>
+        /// <returns>Каталог без книг.</returns>
+        public static Catalog CreateCatalog()
+        {
+            var fixture = new Fixture();
+
+            return new Catalog
+            {
+                Id = fixture.Create<Guid>(),
+                Name = fixture.Create<string>()
+            };
         }
     }
 }
