@@ -23,8 +23,8 @@ namespace OnlineLibrary.Api.Tests.Catalogs
         [Fact]
         public async Task GetList_ContainsCreatedCatalogs()
         {
-            var first = await CreateCatalogAsync();
-            var second = await CreateCatalogAsync();
+            var first = await _client.CreateCatalogAsync();
+            var second = await _client.CreateCatalogAsync();
 
             var response = await _client.GetAsync("/api/catalogs");
 
@@ -38,7 +38,7 @@ namespace OnlineLibrary.Api.Tests.Catalogs
         [Fact]
         public async Task GetById_Existing_ReturnsCatalog()
         {
-            var catalog = await CreateCatalogAsync();
+            var catalog = await _client.CreateCatalogAsync();
 
             var response = await _client.GetAsync($"/api/catalogs/{catalog.Id}");
 
@@ -117,7 +117,7 @@ namespace OnlineLibrary.Api.Tests.Catalogs
         [Fact]
         public async Task Update_Existing_ReturnsUpdatedCatalog()
         {
-            var catalog = await CreateCatalogAsync();
+            var catalog = await _client.CreateCatalogAsync();
             var request = TestData.ValidUpdateCatalogRequest();
 
             var response = await _client.PutAsJsonAsync($"/api/catalogs/{catalog.Id}", request);
@@ -143,7 +143,7 @@ namespace OnlineLibrary.Api.Tests.Catalogs
         [Fact]
         public async Task Delete_Existing_ReturnsNoContent()
         {
-            var catalog = await CreateCatalogAsync();
+            var catalog = await _client.CreateCatalogAsync();
 
             var response = await _client.DeleteAsync($"/api/catalogs/{catalog.Id}");
 
@@ -158,18 +158,6 @@ namespace OnlineLibrary.Api.Tests.Catalogs
             var response = await _client.DeleteAsync($"/api/catalogs/{_fixture.Create<Guid>()}");
 
             response.StatusCode.ShouldBe(HttpStatusCode.NotFound);
-        }
-
-        /// <summary>
-        /// Создаёт каталог через API и возвращает его. Падает, если создание не удалось.
-        /// </summary>
-        /// <returns>Созданный каталог.</returns>
-        private async Task<CatalogResponse> CreateCatalogAsync()
-        {
-            var response = await _client.PostAsJsonAsync("/api/catalogs", TestData.ValidCreateCatalogRequest());
-            response.EnsureSuccessStatusCode();
-
-            return (await response.Content.ReadFromJsonAsync<CatalogResponse>())!;
         }
     }
 }
