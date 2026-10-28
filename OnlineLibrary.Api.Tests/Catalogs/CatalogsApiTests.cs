@@ -93,6 +93,7 @@ namespace OnlineLibrary.Api.Tests.Catalogs
         [Theory]
         [InlineData("")]
         [InlineData("   ")]
+        [InlineData("\t\n")]
         public async Task Create_EmptyName_ReturnsBadRequestWithNameError(string name)
         {
             var response = await _client.PostAsJsonAsync("/api/catalogs", new CreateCatalogRequest(name));
