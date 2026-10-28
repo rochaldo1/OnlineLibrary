@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineLibrary.Application.T
 		{A0481A86-2546-4089-9635-82E7EE3BCE3E} = {A0481A86-2546-4089-9635-82E7EE3BCE3E}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineLibrary.Api.Tests", "OnlineLibrary.Api.Tests\OnlineLibrary.Api.Tests.csproj", "{F4EBA5B5-8198-4023-B8D5-0C6B863EADEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,12 +53,17 @@ Global
 		{EB372773-FD54-4E4A-BFEA-C6957D97F134}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB372773-FD54-4E4A-BFEA-C6957D97F134}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB372773-FD54-4E4A-BFEA-C6957D97F134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4EBA5B5-8198-4023-B8D5-0C6B863EADEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4EBA5B5-8198-4023-B8D5-0C6B863EADEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4EBA5B5-8198-4023-B8D5-0C6B863EADEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4EBA5B5-8198-4023-B8D5-0C6B863EADEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EB372773-FD54-4E4A-BFEA-C6957D97F134} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{F4EBA5B5-8198-4023-B8D5-0C6B863EADEF} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F5F57676-9290-4711-82C9-F4EED4485BB0}
